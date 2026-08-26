@@ -76,7 +76,7 @@
   <!-- Gripper cable guide properties + macro === -->
   <xacro:property name="gripper_side_cylinder_length" value="0.10" />
   <xacro:property name="gripper_side_cylinder_radius" value="0.0175" /> <!-- 3.5 cm diameter -->
-  <xacro:property name="gripper_side_cylinder_y_offset" value="0.075" /> <!-- adjust to clear the mounting plate edge -->
+  <xacro:property name="gripper_side_cylinder_x_offset" value="0.075" /> <!-- adjust to clear the mounting plate edge -->
 
   <xacro:macro name="gripper_side_cylinder" params="parent prefix">
     <link name="${prefix}_side_cylinder_link">
@@ -98,9 +98,9 @@
     <joint name="${prefix}_side_cylinder_joint" type="fixed">
       <parent link="${parent}"/>
       <child link="${prefix}_side_cylinder_link"/>
-      <!-- offset in +Y of the parent frame; rpy=0 keeps the cylinder's
+      <!-- offset in +X of the parent frame; rpy=0 keeps the cylinder's
            native Z-axis aligned with the parent's Z-axis -->
-      <origin xyz="0 ${gripper_side_cylinder_y_offset} -${gripper_side_cylinder_length/2 - 0.02}" rpy="0 0 0"/>
+      <origin xyz="${gripper_side_cylinder_x_offset} 0 -${gripper_side_cylinder_length/2 - 0.02}" rpy="0 0 0"/>
     </joint>
   </xacro:macro>
 
